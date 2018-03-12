@@ -1,0 +1,67 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="users">
+      <div class="col-sm-4">
+        <img class="img-fluid" [src]="users[(randomInt)].img" alt="avatar" style="width: 200px; height: 200px">
+      </div>
+      <div class="col-sm-8">
+        <p class="lead">
+          Имя:
+           {{users[randomInt]?.user}} 
+        </p>
+        <p class="lead">
+          Позиция:
+           {{users[randomInt]?.position}} 
+        </p>
+        <p class="lead">
+          Соло:
+           {{users[randomInt]?.solo}} 
+        </p>
+      </div>
+      </ng-container>
+      
+    </div>
+    <!-- <h1 class="display-4">{{resp.attributes.title}}</h1>
+    <p class="lead">Date:{{dateTransform(resp.attributes.timeStart)}} - {{dateTransform(resp.attributes.timeEnd)}}</p>
+    <ng-container *ngFor='let co of court'>
+    <p class="lead">Место проведения: {{co.get('name') + ' ' + co.get('address') + ' ' + co.get('city') + ' ' + co.get('country')}}</p>
+    </ng-container>
+    <p class="lead">Regulations: {{resp.get('regulations')}}</p>
+    <ng-container *ngFor='let org of organaizer'>
+      <p class="lead">Руководитель турнира: {{org.get('firstName') + ' ' + org.get('lastName')}}</p>
+    </ng-container>
+    <p class="lead">Регламент: {{resp.get('type') + ' ' + resp.get('subtype') + ' Победители играют за ' + resp.get('winners') + 'места'}}</p>
+    <p class="lead">Цена: {{resp.attributes.price}}</p>
+
+    <ng-container *ngIf="(status === 'upcoming') && currentUser?.id">
+      <button type="submit" class="btn" [ngClass]="{ 'btn-default': !btnPrimary, 'btn-primary': btnPrimary}" (click)="register()">Регистрация</button>
+    </ng-container> -->
+  </div>
+</div>
+
+<div class="content-area">
+  <div class="container-fluid">
+    <h3>Рейтинг</h3>
+  		
+    <table class="table table-bordered table-striped rating-table">
+      <thead class="thead-dark">
+        <tr>
+          <th><div class="hidden">Участник</div></th>
+          <th><div class="has-text-centered">Позиция</div></th>
+          <th><div class="has-text-centered">Очки</div></th>   
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let user of users'>
+          <td class="user" [routerLink]="['/user/' + user.id]" >{{user?.user}}</td>
+          <td>{{user?.position}}</td>
+          <td>{{user?.points}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+    
+  </div>
+</div>

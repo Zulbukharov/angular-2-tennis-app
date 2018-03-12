@@ -1,0 +1,83 @@
+<div class="tournaments tournaments--upcoming">
+  <div class="container-fluid">
+    <h3>Предстоящие турниры</h3>
+
+    <div class="row">
+      <div *ngFor="let upcomingTournament of upcomingTournaments" class="col-md-4" style="margin-bottom: 30px">
+        <div class="card card--default">
+          <a href="#" [routerLink]="['/tournament/upcoming/' + upcomingTournament.id ]">
+            <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG" alt="Card image cap">
+          </a>
+          <div class="card-body">
+            <a href="#" [routerLink]="['/tournament/upcoming/' + upcomingTournament.id ]">
+              <h5 class="tournament__title">{{upcomingTournament.attributes.title}}</h5>
+            </a>
+            <p class="tournament__date">
+              {{dateTransform(upcomingTournament.attributes.timeStart)}} - {{dateTransform(upcomingTournament.attributes.timeEnd)}}
+            </p>
+            <p class="tournament__price">
+              Price: {{upcomingTournament.attributes.price}}
+            </p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/tournament/upcoming/' + upcomingTournament.id ]">Смотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tournaments tournaments--recent">
+  <div class="container-fluid">
+    <h3>Недавние турниры</h3>
+
+    <div class="row">
+      <div *ngFor="let recentTournament of recentTournaments" class="col-md-4" style="margin-bottom: 30px">
+        <div class="card card--default">
+          <a href="#" [routerLink]="['/tournament/recent/' + recentTournament.id ]">
+            <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG" alt="Card image cap">
+          </a>
+          <div class="card-body">
+            <a href="#" [routerLink]="['/tournament/recent/' + recentTournament.id ]">
+              <h5 class="tournament__title">{{recentTournament.attributes.title}}</h5>
+            </a>
+            <p class="tournament__date">
+              {{dateTransform(recentTournament.attributes.timeStart)}} - {{dateTransform(recentTournament.attributes.timeEnd)}}
+            </p>
+            <p class="tournament__price">
+              Price: {{recentTournament.attributes.price}}<br/>
+            </p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/tournament/recent/' + recentTournament.id ]">Смотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tournaments tournaments--current">
+  <div class="container-fluid">    
+    <h3>Текущие турниры</h3>
+
+    <div class="row">
+      <div *ngFor="let currentTournament of currentTournaments" class="col-md-4" style="margin-bottom: 30px">
+        <div class="card card--default">
+          <a href="#" [routerLink]="['/tournament/current/' + currentTournament.id ]">
+            <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG" alt="Card image cap">
+          </a>
+          <div class="card-body">
+            <a href="#" [routerLink]="['/tournament/current/' + currentTournament.id ]">
+              <h5 class="tournament__title">{{currentTournament.attributes.title}}</h5>
+            </a>
+            <p class="tournament__date">
+              {{dateTransform(currentTournament.attributes.timeStart)}} - {{dateTransform(currentTournament.attributes.timeEnd)}}
+            </p>
+            <p class="tournament__price">
+              Price: {{currentTournament.attributes.price}}<br/>
+            </p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/tournament/current/' + currentTournament.id ]">Смотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

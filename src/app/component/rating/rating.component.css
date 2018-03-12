@@ -1,0 +1,10 @@
+.rating-table tr,
+.rating-table th,
+.rating-table td {
+	border: 0;
+	vertical-align: middle;
+}
+
+.user {
+	font-weight: bold;
+}

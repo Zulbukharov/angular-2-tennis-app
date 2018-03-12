@@ -1,0 +1,24 @@
+<div class="content-area">
+  <div class="container-fluid">
+    <div *ngFor='let us of user'>
+      <div class="row">
+        <div class="col-md-4">
+          <img class="img-fluid" [src]="us.attributes.profile_avatar?._url" alt="user" class="img-thumbnail">
+        </div>
+        <div class="col-md-8">
+          <h1 class="display-4">{{us.get('lastName') + ' ' + us.get('firstName')}}</h1>
+          <hr class="my-4">
+          <p class="lead"><strong>Страна:</strong> {{us.get('country_live')}} </p>
+          <p class="lead"><strong>Рост:</strong> {{us.get('height')}} </p>
+          <p class="lead"><strong>Пол:</strong> {{us.get('sex')}} </p>
+          <p class="lead"><strong>Вес:</strong> {{us.get('weight')}} </p>
+          <p class="lead"><strong>Телефон:</strong> {{us.get('phoneNumber')}} </p>
+          <p class="lead"><strong>Дата рождения:</strong> {{dateTransform(us.get('born_date'))}} </p>
+          <div *ngIf="current_user === true">
+            <button type="button" class="btn btn-primary" [routerLink]="['/edit/']">Настройки</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

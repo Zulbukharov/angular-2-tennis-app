@@ -1,0 +1,65 @@
+<div class="content-area content-area--bg">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h2 class="auth-heading">Settings</h2>
+
+                <div class="auth-wrap">
+                    <form class="form-horizontal" *ngIf="currentUser.id">
+                        <div class="row">
+                          <div class="col-md-8">
+                          </div>
+                          <div class="col-md-4">
+                              <div class="alert alert-success alert-dismissable" *ngIf="msg">
+                                 {{msg}}
+                              </div>
+                          </div>
+                        </div>   
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" name="firstName" [(ngModel)]="model.firstName" #firstName="ngModel" [placeholder]="currentUser.attributes?.firstName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" name="lastName" [(ngModel)]="model.lastName" #lastName="ngModel" [placeholder]="currentUser.attributes?.lastName" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="city">city</label>
+                            <input type="text" class="form-control" id="city" 
+                            name="city" [(ngModel)]="model.city_live" placeholder="Enter your city" [placeholder]="currentUser.attributes?.city_live">
+                        </div>
+                        <div class="form-group">
+                            <div class="well"> 
+                              <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" [(ngModel)]="model.born_date" name="born_date" class="form-control" id="born" placeholder="Date of Birth">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="height">height</label>
+                            <input type="text" class="form-control" id="height" 
+                            name="height" [(ngModel)]="model.height" [placeholder]="currentUser.attributes?.height">
+                        </div>
+                        <div class="form-group">
+                            <label for="weight">weight</label>
+                            <input type="text" class="form-control" id="weight" 
+                            name="weight" [(ngModel)]="model.weight" [placeholder]="currentUser.attributes?.weight">
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" [(ngModel)]="model.sex" name="inlineRadioOptions" id="inlineRadio1" value="male">
+                            <label class="form-check-label" for="inlineRadio1">male</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" [(ngModel)]="model.sex" name="inlineRadioOptions" id="inlineRadio2" value="female">
+                            <label class="form-check-label" for="inlineRadio2">female</label>
+                          </div>
+                        <div class="form-group"> 
+                            <button type="submit" class="btn btn-primary" (click)="edit()">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,214 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.container-fluid {
+	max-width: 1260px;
+}
+
+h3 {
+	font-size: 22px;
+	font-weight: bold;
+	color: #c20017;
+	text-transform: uppercase;
+	border-bottom: 1px solid #cddff0;
+	padding: 0 0 10px;
+	margin: 0 0 30px;
+}
+
+.btn-primary {
+    background-color: #036;
+    border-color: #036;
+}
+.btn-primary:hover {
+	color: #5787b8;
+    background-color: #036;
+    border-color: #036;
+}
+
+.card--default {
+	background-color: #fff;
+	border: 1px solid #cddff0;
+	border-radius: 0;
+}
+.card--no-border {
+	border: 0;
+	border-radius: 0;
+}
+.card-img-top {
+	border-radius: 0;
+}
+
+.card-body p {
+	margin-bottom: 4px;
+}
+.card-body p:last-of-type {
+	margin-bottom: 20px;
+}
+
+.dropdown-menu {
+	border-radius: 0;
+}
+
+.mr20 {
+	margin-right: 20px;
+}
+.mb20 {
+	margin-bottom: 20px;
+}
+strong {
+	font-weight: bold;
+}
+
+/* Navbar */
+.navbar-dark {
+	border-top: 3px solid #c20017;
+}
+.bg-dark {
+	background-color: #036 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+
+}
+.navbar-dark .navbar-nav .nav-link:focus, 
+.navbar-dark .navbar-nav .nav-link:hover {
+	color: #fff;
+}
+.navbar-dark .navbar-nav .active>.nav-link, 
+.navbar-dark .navbar-nav .nav-link.active {
+    text-decoration: underline;
+}
+
+.content {
+	background: #f6f8fa;
+}
+.content-area {
+	min-height: 600px;
+	background: #fff;
+	padding: 60px 0 80px;
+}
+.content-area--bg {
+	background: #f6f8fa;
+}
+
+/* Tournaments */
+.tournaments {
+	padding: 40px 0;
+}
+
+.tournaments--current {
+	/*background: #fff;*/
+}
+
+.tournaments--upcoming {
+	/*background: #f1f1f1;*/
+}
+
+.tournaments--recent {
+	/*background: #fff;*/
+}
+
+.tournament__title {
+	color: #000;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.tournament__date,
+.tournament__price {
+	font-size: 14px;
+	margin-bottom: 4px;
+}
+
+/* News */
+.news-item {
+	margin: 0 0 30px;
+}
+.news-item__title {
+	font-size: 18px;
+	font-weight: bold;
+}
+.news-item__excerpt {
+	font-size: 14px;
+}
+
+/* Auth */
+.auth-heading {
+	text-align: center;
+	font-size: 30px;
+	margin: 0 0 16px;
+}
+.auth-wrap {
+	background: #fff;
+	padding: 30px;
+	border: 1px solid #ced7df;
+	border-radius: 4px;
+}
+
+.read-data {
+	margin: 40px 0;
+}
+
+/* Footer */
+.footer {
+	background-color: #036;
+    padding: 30px 0 20px;
+}
+
+.footer__heading {
+	font-size: 20px;
+	color: #fff;
+	padding: 0 0 16px 0;
+    border-bottom: 1px solid #cdcdcd;
+    margin: 0 0 16px 0;
+}
+
+.footer__nav {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.footer__link {
+	color: #91C8FE;
+	font-size: 16px;
+}
+
+.footer__copyright {
+	color: #fff;
+	margin: 20px 0 0;
+}
+
+/* Featured News */
+.home-news {
+	padding: 40px 0 0 0;
+}
+.featured-news {
+	position: relative;
+	margin-bottom: 20px;
+}
+
+.featured-news__caption {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	color: #fff;
+	background: rgba(0,0,0,0.6);
+	padding: 20px;
+}
+.featured-news__caption h4 {
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.featured-news__caption--secondary h4 {
+	font-size: 16px;
+}
+.featured-news__caption--secondary p {
+	font-size: 14px;
+	text-transform: none;
+	line-height: 1;
+}

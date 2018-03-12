@@ -1,0 +1,26 @@
+<div class="home-news">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="featured-news">
+          <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG">
+          <div class="featured-news__caption">
+            <h4>{{ featuredNews?.get('Title') }}</h4>
+            <p>{{ (featuredNews?.get('Text').replace(featuredNews?.get('Text').substring(128), '')) }}</p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/news/' + featuredNews?.id]">Читать далее</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="featured-news" *ngFor="let data of news">
+          <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG">
+          <div class="featured-news__caption featured-news__caption--secondary">
+            <h4>{{data?.get('Title')}}</h4>
+            <p>{{ (data?.get('Text').replace(data?.get('Text').substring(128), '')) }}</p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/news/' + data?.id]">Читать далее</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

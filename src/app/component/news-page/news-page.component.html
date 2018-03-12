@@ -1,0 +1,9 @@
+<div class="content-area">
+	<div class="container-fluid">
+		<div *ngFor="let data of news">
+			<h1 class="display-8">{{data.get('Title')}}</h1>
+			<img class="mr20 mb20 float-left" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG">
+			<p class="lead">{{ data.get('Text') }}</p>
+	  	</div>
+	</div>
+</div>

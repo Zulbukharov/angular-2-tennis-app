@@ -1,0 +1,76 @@
+<div class="content-area">
+	<div class="container-fluid">
+		<div *ngIf="!isTrainer">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Тренер</th>
+						<th>Дата тренировки</th>
+						<th>Ответ тренера</th>
+						<th>Подтвержден</th>
+						<th>Статус</th>
+						<th>
+							Действия
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let game of games">
+						<td>{{ game?.get('trainerId').get('firstName') }} {{ game?.get('trainerId').get('lastName') }}</td>
+						<td>{{ game?.get('TrainingDate') }}</td>
+						<td>{{ game?.get('trainerText') }}</td>
+						<td>{{ game?.get('isConfirmed') ? 'Да' : 'Нет' }}</td>
+						<td>
+							<div *ngIf="game?.get('isCanceledR')">
+								Отклонено игроком
+							</div>
+							<div *ngIf="game?.get('isCanceledT')">
+								Отклонено тренером
+							</div>
+						</td>
+						<td>
+							
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div *ngIf="isTrainer">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Игрок</th>
+						<th>Дата тренировки</th>
+						<th>Ответ игрока</th>
+						<th>Подтвержден</th>
+						<th>Статус</th>
+						<th>
+							Действия
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let game of games">
+						<td>{{ game?.get('playerId').get('firstName') }} {{ game?.get('playerId').get('lastName') }}</td>
+						<td>{{ game?.get('TrainingDate') }}</td>
+						<td>{{ game?.get('requestText') }}</td>
+						<td>{{ game?.get('isConfirmed') ? 'Да' : 'Нет' }}</td>
+						<td>
+							<div *ngIf="game?.get('isCanceledR')">
+								Отклонено игроком
+							</div>
+							<div *ngIf="game?.get('isCanceledT')">
+								Отклонено тренером
+							</div>
+						</td>
+						<td>
+							<button *ngIf="!game?.get('isConfirmed')" class="btn btn-primary" (click)="confirmTraining(game.id)">Подтвердить</button>
+							<button *ngIf="!game?.get('isCanceledT')" class="btn btn-danger" (click)="cancelTrainingT(game.id)">Отклонить</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

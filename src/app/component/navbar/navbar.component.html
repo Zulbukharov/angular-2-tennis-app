@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['']">Главная</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" [routerLink]="['tournaments']">Турниры</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['rating']">Рейтинг</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['news']">Новости</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['trainers']">Тренеры</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['courts']">Корты</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ">
+        <ng-container *ngIf="current_user === true">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{currentUser.get('username')}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" [routerLink]="['/user/' + currentUser.id ]">Профиль</a>
+                  <a class="dropdown-item" [routerLink]="['/user/' + currentUser.id + '/games' ]">Мои игры</a>
+                  <a class="dropdown-item" [routerLink]="['/user/' + currentUser.id + '/trainings' ]">Тренировки</a>
+                  <a class="dropdown-item" href="#" (click)='exit()'>Выход</a>
+                </div>
+            </li>
+        </ng-container>
+        <ng-container *ngIf="current_user === false">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/login' ]">Вход</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-danger" [routerLink]="['/signup' ]">Регистрация</a>
+            </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,67 @@
+<app-featured-news></app-featured-news>
+
+<div class="home-news">
+	<div class="container-fluid">
+    <a class="see-more float-right" [routerLink]="['tournaments']">Смотреть еще</a>
+		<h3>Матчи</h3>
+		<div class="row">
+			<div class="col-md-3" *ngFor="let game of games">
+				<div class="game">
+					<div class="player1">
+						<div>{{ game.get('player1').get('firstName') + game.get('player1').get('lastName') }}</div>
+						<div class="score">{{ game.get('score1') }}</div>
+					</div>
+					<div class="player2">
+						<div>{{ game.get('player2').get('firstName') + game.get('player2').get('lastName') }}</div>
+						<div class="score">{{ game.get('score2') }}</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+	</div>
+</div>
+
+<div class="home-news">
+  <div class="container-fluid">
+    <a class="see-more float-right" [routerLink]="['rating']">Смотреть всех</a>
+    <h3>Рейтинг</h3>
+    <h4 class="sub-heading">Top 10</h4>
+        
+    <div class="rankings">
+      <div class="ranking" *ngFor="let user of users">
+        <img class="img-fluid" [src]="user.img ? user.img : 'http://via.placeholder.com/200x200'">
+        <div class="user" [routerLink]="['/user/' + user.id]" >{{ user?.user }}</div>
+        <div>{{ user?.points }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="tournaments tournaments--current">
+  <div class="container-fluid">    
+    <h3>Текущие турниры</h3>
+
+    <div class="row">
+      <div *ngFor="let currentTournament of currentTournaments" class="col-md-4" style="margin-bottom: 30px">
+        <div class="card card--default">
+          <a href="#" [routerLink]="['/tournament/current/' + currentTournament.id ]">
+            <img class="card-img-top" src="http://cdn.tennis.com/uploads/img/2018/01/29/c9aa15681db2403a816d69a1b4130403/desktop-large.JPG" alt="Card image cap">
+          </a>
+          <div class="card-body">
+            <a href="#" [routerLink]="['/tournament/current/' + currentTournament.id ]">
+              <h5 class="tournament__title">{{currentTournament.attributes.title}}</h5>
+            </a>
+            <p class="tournament__date">
+              {{dateTransform(currentTournament.attributes.timeStart)}} - {{dateTransform(currentTournament.attributes.timeEnd)}}
+            </p>
+            <p class="tournament__price">
+              Price: {{currentTournament.attributes.price}}<br/>
+            </p>
+            <a href="#" class="btn btn-primary" [routerLink]="['/tournament/current/' + currentTournament.id ]">Смотреть</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

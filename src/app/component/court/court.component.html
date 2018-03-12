@@ -1,0 +1,55 @@
+<div class="content-area content-area--bg">
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="col-md-4">
+    			<h2>{{court?.get('name')}}</h2>
+				<p><strong>Страна:</strong> {{ court?.get('country') }}</p>
+				<p><strong>Город:</strong> {{ court?.get('city') }}</p>
+				<p><strong>Адрес:</strong> {{court?.get('address')}}</p>
+    		</div>
+    		<div class="col-md-8">
+    			<div class="row">
+    				<div *ngFor="let photo of photos" class="col-md-6">
+    					<img  class="img-fluid" src="{{ photo?.get('photo')._url }}">
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+
+    	<h3>Хард ({{ courtHard?.length }})</h3>
+      
+      <div class="row">
+        <div class="col-md-4" *ngFor="let court of courtHard">
+          <div class="card card--default" style="margin-bottom: 20px">
+            <div class="card-body">
+            	<button type="button" class="btn btn-primary">Забронировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Грунт ({{ courtGrunt?.length }})</h3>
+      
+      <div class="row">
+        <div class="col-md-4" *ngFor="let court of courtGrunt">
+          <div class="card card--default" style="margin-bottom: 20px">
+            <div class="card-body">
+            	<button type="button" class="btn btn-primary">Забронировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3>Дерево ({{ courtWood?.length }})</h3>
+      
+      <div class="row">
+        <div class="col-md-4" *ngFor="let court of courtWood">
+          <div class="card card--default" style="margin-bottom: 20px">
+            <div class="card-body">
+            	<button type="button" class="btn btn-primary">Забронировать</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

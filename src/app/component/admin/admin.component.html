@@ -1,0 +1,78 @@
+<ng-container *ngIf="isAdmin === true">
+<div class="content-area">    
+  <div class="container-fluid"> 
+    <div class="clearfix"></div>
+    <h3>Create news:</h3>
+    <form class="form-horizontal">
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="name">Title:</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" 
+        name="title" [(ngModel)]="model.title" placeholder="Enter your title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="text">Text:</label>
+        <div class="col-sm-10"> 
+        <textarea name="text" cols="40" rows="5" class="form-control" id="text"
+        [(ngModel)]="model.text" placeholder="Enter your text"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row"> 
+        <div class="col-sm-10 offset-sm-2">
+        <button type="submit" class="btn btn-primary" (click)="addNews()">Save</button>
+        </div>
+    </div>
+    </form>
+
+    <div class="read-data">
+      <h3>Read data & (Delete data):</h3>
+      <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th width=400>Title</th>
+          <th width=400>Created At</th>
+          <th width=250>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of news; let i=index">
+          <td>{{item.get('Title')}}</td>
+          <td>{{item.createdAt}}</td>
+          <td>
+              <a class="btn btn-success" (click)="editEmployee(i)">Edit</a>
+              <a class="btn btn-danger" (click)="deleteNews(i)">Delete</a>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+   <h3>Update data:</h3>
+    <form class="form-horizontal">
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="name">TItle:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="title" 
+        name="title" [(ngModel)]="model2.title" placeholder="Enter new title">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="control-label col-sm-2" for="position">Text:</label>
+        <div class="col-sm-10"> 
+          <textarea name="text" cols="40" rows="10" class="form-control" id="text"
+          [(ngModel)]="model2.text" placeholder="Enter new text"></textarea>
+        </div>
+    </div>
+
+    <div class="form-group row"> 
+        <div class="col-sm-10 offset-sm-2">
+          <button type="submit" class="btn btn-primary" (click)="updateNews()">Update</button>
+        </div>
+    </div>
+    </form>
+  </div>
+</div>
+</ng-container>

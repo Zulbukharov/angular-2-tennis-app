@@ -1,0 +1,22 @@
+<div class="content-area">
+	<div class="container-fluid">
+		<h3>Мои игры</h3>
+
+	    <table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Игрок 1</th>
+					<th>Игрок 2</th>
+					<th>Счет</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let game of games">
+					<td>{{ game.get('player1').get('firstName') + game.get('player1').get('lastName') }}</td>
+					<td>{{ game.get('player2').get('firstName') + game.get('player2').get('lastName') }}</td>
+					<td>{{ game.get('score1') }}:{{ game.get('score2') }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

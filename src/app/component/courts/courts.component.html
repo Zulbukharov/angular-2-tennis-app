@@ -1,0 +1,51 @@
+<div class="content-area content-area--bg">
+    <div class="container-fluid">
+      <h3>Корты</h3>
+      
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <select 
+              class="form-control"
+              [(ngModel)]="selectedCountry" 
+              (change)="selectCountry()">
+              <option 
+                *ngFor="let country of countries" 
+                [value]="country">
+                {{ country }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group" *ngIf="selectedCountry">
+            <select 
+              class="form-control"
+              [(ngModel)]="selectedCity" 
+              (change)="selectCity()">
+              <option 
+                *ngFor="let city of locations[selectedCountry]" 
+                [value]="city">
+                {{ city }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-4" *ngFor="let court of courts">
+              <div class="card card--default" style="margin-bottom: 20px">
+                <div class="card-body">
+                  <h4 class="news-item__title">{{court.get('name')}}</h4>
+                  <p><strong>Страна:</strong> {{ court.get('country') }}</p>
+                  <p><strong>Город:</strong> {{ court.get('city') }}</p>
+                  <p><strong>Адрес:</strong> {{court.get('address')}}</p>
+                  <a href="#" class="btn btn-primary" [routerLink]="[court.id]">Смотреть</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

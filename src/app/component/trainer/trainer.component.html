@@ -1,0 +1,56 @@
+<div class="content-area">
+    <div class="container-fluid">
+      <div class="jumbotron jumbotron-fluid" *ngFor='let us of trainer'>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img class="img-fluid" [src]="us?.attributes?.profile_avatar?._url" alt="user">
+            </div>
+            <div class="col-md-8">
+              <h1 class="display-4">{{us.get('firstName') + ' ' + us.get('lastName')}}</h1>
+              <p class="lead"><strong>Страна:</strong> {{us.get('country_live')}}</p>
+              <p class="lead"><strong>Город:</strong> {{us.get('city_live')}}</p>
+              <p class="lead"><strong>Возраст:</strong> {{calculateAge(us.get('born_date'))}}</p>
+              <p class="lead"><strong>Рейтинг:</strong> {{ us.get('trainerRating') }}</p>
+              <p class="lead"><strong>Пол:</strong> {{ us.get('sex') }}</p>
+              <p class="lead"><strong>Рост:</strong> {{ us.get('height') }}</p>
+              <p class="lead"><strong>Вес:</strong> {{ us.get('weightyyyyyyy') }}</p>
+              <p class="lead"><strong>Рабочая рука:</strong> {{ us.get('main_hand') }}</p>
+            </div>
+          </div>
+
+          <div *ngIf="current_user === true">
+            <button type="button" class="btn btn-primary" (click)="registrate()">Записаться</button>
+          </div>
+          <div *ngIf="registrateToTrainer">
+            <hr>
+
+            <form class="form-horizontal" (ngSubmit)="onSubmit(f)" novalidate #f="ngForm">
+                <div class="form-group">
+                  <label>Дата тренировки</label>
+                  <input type="date" name="date" class="form-control" id="date" placeholder="Date of training" ngModel required>
+                </div>
+
+                <div class="form-group">
+                  <label>Время тренировки</label>
+                  <input type="time" name="time" class="form-control" id="time" placeholder="Time of training" ngModel required>
+                </div>
+
+                <input type="hidden" name="trainerId" [ngModel]="us.id" required>
+                <input type="hidden" name="playerId" [ngModel]="currentUser.id" required>
+
+                <div class="form-group">
+                  <label>Сообщение</label>
+                  <textarea class="form-control" name="requestText" ngModel></textarea>
+                </div>
+
+                <div class="form-group"> 
+                  <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Запросить тренировку</button>
+                </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

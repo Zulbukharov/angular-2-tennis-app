@@ -1,0 +1,87 @@
+<!-- MAIN INFO -->
+<div class="content-area">
+  <div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid" *ngFor="let resp of response">
+      <div class="container">
+        <h1 class="display-4">{{resp.attributes.title}}</h1>
+        <p class="lead"><strong>Date:</strong> {{dateTransform(resp.attributes.timeStart)}} - {{dateTransform(resp.attributes.timeEnd)}}</p>
+        <ng-container *ngFor='let co of court'>
+        <p class="lead"><strong>Место проведения:</strong> {{co.get('name') + ' ' + co.get('address') + ' ' + co.get('city') + ' ' + co.get('country')}}</p>
+        </ng-container>
+        <p class="lead"><strong>Regulations:</strong> {{resp.get('regulations')}}</p>
+        <ng-container *ngFor='let org of organaizer'>
+          <p class="lead"><strong>Руководитель турнира:</strong> {{org.get('firstName') + ' ' + org.get('lastName')}}</p>
+        </ng-container>
+        <p class="lead"><strong>Регламент:</strong> {{resp.get('type') + ' ' + resp.get('subtype') + ', Победители играют за ' + resp.get('winners') + ' места'}}</p>
+        <p class="lead"><strong>Цена:</strong> {{resp.attributes.price}}</p>
+
+        <ng-container *ngIf="(status === 'upcoming') && currentUser?.id">
+          <button type="submit" class="btn" [ngClass]="{ 'btn-default': !btnPrimary, 'btn-primary': btnPrimary}" (click)="register()">Регистрация</button>
+        </ng-container>
+      </div>
+    </div>
+
+    <!-- GROUPS -->
+
+    <ul class="list-group" *ngFor="let group of groups">
+          <li class="list-group-item active">{{group[0].name}}</li>
+          <li class="list-group-item" *ngFor="let row of group[0].rows">
+            <div class="row">
+              <div class="col-md-10">
+                {{row.user}}
+              </div>
+              <div class="col-md-4">
+                {{row.score}}
+              </div>
+            </div>
+          </li>
+        </ul>
+
+    <!-- TOURNAMENT DRAW -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2" *ngFor="let row of reserveRounds">
+          <div (click)='sortRounds(row[0].value)'>{{row[0].round}}</div>
+        </div>
+      </div>
+      <main id="tournament">
+    	  <ul class="round round" *ngFor="let round of filteredRounds; ">
+          {{round[0].round}}
+          <ng-container *ngFor="let game of round[0].games; let i = index; ">
+
+           <li class="spacer" *ngIf="i == 0">&nbsp;</li>
+
+    		   <li class="game game-top">{{game.attributes.player1.attributes.firstName + ' ' + game.attributes.player1.attributes.lastName}}<span>{{game.attributes.score1}}</span></li>
+           <li class="game game-spacer">&nbsp;</li>
+    		   <li class="game game-bottom ">{{game.attributes.player2.attributes.firstName + ' ' + game.attributes.player2.attributes.lastName}}<span>{{game.attributes.score2}}</span></li>
+           <li class="spacer">&nbsp;</li>
+
+          </ng-container>
+    	  </ul>
+      </main>
+
+      <div *ngIf="isRecent">
+        <h3>Рейтинг</h3>
+        
+        <table class="table table-bordered table-striped rating-table">
+          <thead class="thead-dark">
+            <tr>
+              <th><div class="hidden">Участник</div></th>
+              <th><div class="has-text-centered">Позиция</div></th>
+              <th><div class="has-text-centered">Очки</div></th>   
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor='let result of results'>
+              <td class="user" [routerLink]="['/user/' + result.get('playerId').id]">
+                {{result.get('playerId').get('firstName')}} {{result.get('playerId').get('lastName')}}
+              </td>
+              <td>{{result.get('position')}}</td>
+              <td>{{result.get('score')}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

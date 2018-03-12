@@ -1,0 +1,55 @@
+<div class="content-area content-area--bg">
+    <div class="container-fluid">
+      <h3>Тренеры</h3>
+      
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <select 
+              class="form-control"
+              [(ngModel)]="selectedCountry" 
+              (change)="selectCountry()">
+              <option 
+                *ngFor="let country of countries" 
+                [value]="country">
+                {{ country }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group" *ngIf="selectedCountry">
+            <select 
+              class="form-control"
+              [(ngModel)]="selectedCity" 
+              (change)="selectCity()">
+              <option 
+                *ngFor="let city of locations[selectedCountry]" 
+                [value]="city">
+                {{ city }}
+              </option>
+            </select>
+          </div>
+          <div>
+        </div>
+        </div>
+        <div class="col-md-9">
+          <div class="row">
+            <div class="col-md-4" *ngFor="let trainer of trainers">
+              <div class="card card--default" style="margin-bottom: 20px">
+                <img class="card-img-top" [src]="trainer.attributes.profile_avatar?._url">  
+                <div class="card-body">
+                  <h4 class="news-item__title">{{trainer.get('firstName') + ' ' + trainer.get('lastName')}}</h4>
+                  <!-- <p class="news-item__excerpt">Возраст: {{calculateAge(data.get('born_date'))}}</p> -->
+                  <p><strong>Страна:</strong> {{ trainer.get('country_live') }}</p>
+                  <p><strong>Город:</strong> {{ trainer.get('city_live') }}</p>
+                  <p><strong>Рейтинг:</strong> {{trainer.get('trainerRating')}}</p>
+                  <a href="#" class="btn btn-primary" [routerLink]="[trainer.id]">Смотреть профиль</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
